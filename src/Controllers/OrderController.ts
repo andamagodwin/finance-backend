@@ -203,3 +203,81 @@ export const handleDeleteOrder = async (req: Request, res: Response) => {
       .end();
   }
 };
+
+
+//handle assigin order to mmeber
+export const handleAssignOrderToMember = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { orderId, memberId } = req.body;
+
+    if (!orderId || !memberId) {
+      return res
+        .json(customPayloadResponse(false, "Order ID and Member ID Required"))
+        .status(200)
+        .end();
+    }
+
+    const order = await getOrderById(parseInt(orderId));
+
+    if (!order) {
+      return res
+        .json(customPayloadResponse(false, "Order Not Found"))
+        .status(200)
+        .end();
+    }
+
+    order.memberId = memberId;
+
+    order.status = "approved"; // Set status to pending when assigned to a member
+    await order.save();
+
+    return res
+      .json(customPayloadResponse(true, "Order Assigned Successfully"))
+      .status(200)
+      .end();
+  } catch (error) {
+    console.log(error);
+    return res
+      .json(customPayloadResponse(false, "An Error Occured"))
+      .status(200)
+      .end();
+  }
+}
+
+
+//handle get order by member id
+export const handleGetOrdersByMemberId = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { memberId } = req.body;
+
+    if (!memberId) {
+      return res
+        .json(customPayloadResponse(false, "Member ID Required"))
+        .status(200)
+        .end();
+    }
+
+    const orders = await getOrdersByUserId(parseInt(memberId));
+
+    if (!orders) {
+      return res
+        .json(customPayloadResponse(false, "Orders Not Found"))
+        .status(200)
+        .end();
+    }
+
+    return res.json(customPayloadResponse(true, orders)).status(200).end();
+  } catch (error) {
+    console.log(error);
+    return res
+      .json(customPayloadResponse(false, "An Error Occured"))
+      .status(200)
+      .end();
+  }
+};

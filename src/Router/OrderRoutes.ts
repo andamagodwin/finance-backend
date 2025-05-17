@@ -5,6 +5,7 @@ const {
   handleGetOrders,
   handleDeleteOrder,
   handleGetUserOrders,
+  handleAssignOrderToMember,
   handleAsignAgent,
   handleAsignDelivery,
   handleAsignPromoter,
@@ -30,5 +31,12 @@ export default (router: Router) => {
     handleChangeOrderStatus
   );
   router.delete(`${OrderPrefix}/delete`, JWTAuthMiddleWare, handleDeleteOrder);
+
+
+  router.post(
+    `${OrderPrefix}/assign-to-member`,
+    JWTAuthMiddleWare,
+    handleAssignOrderToMember
+  );
 
 };

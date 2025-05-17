@@ -27,7 +27,7 @@ export class Order extends BaseEntity {
 
   @ManyToOne(() => User, { eager: true, nullable: true })
   @JoinColumn({ name: "memberId" })
-  member!: User; // This will hold the full User object
+  memberId!: User; // This will hold the full User object
 
   @Column()
   amount: number;
@@ -139,7 +139,7 @@ export const getUserOrders = async (id: number): Promise<Order[]> => {
     order: {
       id: "DESC",
     },
-    where: [{ user: { id } }, { member: { id } }],
+    where: [{ user: { id } }, { memberId: { id } }],
   });
 };
 
@@ -171,7 +171,7 @@ export const asignMember = async (id: number, memberId: number) => {
   if (!member) throw new Error("Agent not found");
 
   // Update the agent relationship
-  orderObj.member = member;
+  orderObj.memberId = member;
   await orderObj.save();
   return orderObj;
 };
