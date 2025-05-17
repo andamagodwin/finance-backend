@@ -10,6 +10,7 @@ import {
   OrderStatus,
   isValidOrderStatus,
   getOrdersByUserId,
+  getOrdersByMemberId,
 } from "../Entities/Order";
 import { customPayloadResponse } from "../Helpers/Helpers";
 
@@ -263,7 +264,7 @@ export const handleGetOrdersByMemberId = async (
         .end();
     }
 
-    const orders = await getOrdersByUserId(parseInt(memberId));
+    const orders = await getOrdersByMemberId(parseInt(memberId));
 
     if (!orders) {
       return res

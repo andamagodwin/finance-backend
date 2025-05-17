@@ -6,6 +6,7 @@ const {
   handleDeleteOrder,
   handleGetUserOrders,
   handleAssignOrderToMember,
+  handleGetOrdersByMemberId,
   handleAsignAgent,
   handleAsignDelivery,
   handleAsignPromoter,
@@ -38,5 +39,13 @@ export default (router: Router) => {
     JWTAuthMiddleWare,
     handleAssignOrderToMember
   );
+
+  //get orders by member id
+  router.post(
+    `${OrderPrefix}/member`,
+    JWTAuthMiddleWare,
+    handleGetOrdersByMemberId
+  );
+  
 
 };

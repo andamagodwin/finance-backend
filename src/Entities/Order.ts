@@ -126,6 +126,13 @@ export const getOrdersByUserId = async (userId: number) => {
   });
 };
 
+export const getOrdersByMemberId = async (memberId: number) => {
+  return Order.find({
+    where: { memberId: { id: memberId } },
+  });
+};
+
+
 export const getOrders = async (): Promise<Order[]> => {
   return await Order.find({
     order: {
