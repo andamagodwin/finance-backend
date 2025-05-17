@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email from FLFL</title>
+</head>
+
+<body>
+  <!-- An Email template for the product request 
+    reference: https://www.campaignmonitor.com/resources/guides/email-marketing-benchmarks/
+    
+  -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background: #555;
+    }
+  </style>
+  <div class="container">
+    <h1>{{emailSubject}}</h1>
+    <p>Hi Admin,</p>
+    <p>There is a request from FLFL. Please find the details below:</p>
+    <p><strong>Title:</strong> {{ emailTitle }}</p>
+    <p><strong>Country:</strong> {{ country }}</p>
+    <p><strong>Phone Number:</strong> {{ phone_number }}</p>
+    <p><strong>Receiver:</strong> {{ receiver }}</p>
+    <p><strong>Package:</strong> {{ gift_package }}</p>
+    <p><strong>Coins Removed</strong> {{ reducedby }}</p>
+    <p><strong>Selected Match: </strong> {{ match }}</p>
+    <p><strong>User:</strong> {{ user_full_name }}</p> 
+    <p><strong>Which Team Won: </strong> {{ winteam }}</p> 
+    <p><strong>How many goals will be scored: </strong> {{ goals }}</p> 
+    <p><strong>Penalties:</strong> {{ penalty }}</p> 
+    <p><strong>Yellow cards:</strong> {{ yellowcard }}</p> 
+    <p><strong>Red cards:</strong> {{ red_card }}</p> 
+    <p><strong>Who scored:</strong> {{ who_scored }}</p> 
+    <p><strong>Free kicks:</strong> {{ free_kicks }}</p> 
+    <p><strong>Side corners:</strong> {{ side_corners }}</p> 
+     <p><strong>First Goal will be at the:</strong> {{ first_goal }}</p> 
+    <p>Thanks</p>
+    <p>Team</p>
+  </div>
+
+
+</body>
+
+</html>
